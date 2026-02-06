@@ -6,7 +6,7 @@
 <title>Validação de CIE - Meia Entrada</title>
 
 <style>
-    /* --- VARIÁVEIS DE CORES (Baseado no seu JSON) --- */
+    /* --- VARIÁVEIS DE CORES --- */
     :root {
         --primary-blue-dark: #0B5A9C;
         --primary-blue-medium: #1E73BE;
@@ -30,24 +30,22 @@
     }
 
     body {
-        font-family: sans-serif; /* Conforme JSON */
+        font-family: sans-serif;
         background-color: var(--white);
         color: var(--text-black);
         line-height: 1.5;
-        /* Centraliza no PC, preenche no celular */
         display: flex;
         justify-content: center;
         min-height: 100vh;
     }
 
-    /* Container principal para simular mobile no PC */
     .container {
         width: 100%;
-        max-width: 480px; /* Largura típica mobile grande */
+        max-width: 480px;
         background-color: var(--white);
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Sombra suave no PC */
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
     /* --- HEADER --- */
@@ -64,7 +62,7 @@
         background-color: var(--primary-blue-medium);
         color: var(--white);
         padding: 6px 12px;
-        border-radius: 6px; /* Rounded Rectangle */
+        border-radius: 6px;
         font-size: 14px;
         font-weight: bold;
         border: 1px solid rgba(255,255,255,0.3);
@@ -83,7 +81,6 @@
         flex: 1;
     }
 
-    /* Título */
     .section-title {
         font-size: 20px;
         color: var(--primary-blue-medium);
@@ -93,13 +90,12 @@
     }
 
     .divider {
-        width: 60px; /* Short length */
+        width: 60px;
         height: 3px;
         background-color: var(--primary-blue-medium);
         margin-bottom: 20px;
     }
 
-    /* Banner de Status */
     .status-banner {
         background-color: var(--success-green-light);
         color: var(--success-green-text);
@@ -112,29 +108,27 @@
         border: 1px solid rgba(46, 125, 50, 0.2);
     }
 
-    /* Descrição */
     .description {
         color: var(--text-black);
         margin-bottom: 25px;
         font-size: 14px;
     }
 
-    /* Área de Dados (Two Columns) */
+    /* Área de Dados */
     .data-section {
         display: flex;
-        flex-direction: column; /* Mobile first */
+        flex-direction: column;
         gap: 20px;
         margin-bottom: 30px;
     }
 
     @media (min-width: 400px) {
         .data-section {
-            flex-direction: row; /* Two columns em telas maiores */
+            flex-direction: row;
             align-items: flex-start;
         }
     }
 
-    /* Coluna da Esquerda (Lista) */
     .data-list {
         flex: 1;
     }
@@ -156,11 +150,16 @@
         word-break: break-word;
     }
 
-    /* Coluna da Direita (Foto) */
+    /* --- COLUNA DA FOTO (AJUSTADA PARA ENQUADRAR AUTOMATICAMENTE) --- */
     .photo-column {
-        width: 120px; /* Largura fixa para foto */
+        width: 120px;
+        height: 160px; /* Altura fixa essencial para o corte */
         flex-shrink: 0;
         margin-left: 0;
+        border-radius: 8px;
+        overflow: hidden; /* Corta o que estiver fora do quadrado */
+        background-color: #f0f0f0; /* Fundo cinza enquanto carrega */
+        border: 1px solid var(--border-gray);
     }
 
     @media (min-width: 400px) {
@@ -169,15 +168,15 @@
         }
     }
 
+    /* AQUI ESTÁ O SEGREDO DO ENQUADRAMENTO */
     .student-photo {
         width: 100%;
-        height: auto;
-        border-radius: 4px;
-        object-fit: cover;
-        border: 1px solid var(--border-gray);
+        height: 100%;
+        object-fit: cover; /* Faz a imagem cobrir toda a área sem distorcer */
+        display: block;
     }
 
-    /* Seção de Certificado */
+    /* --- CERTIFICADO --- */
     .cert-section {
         margin-bottom: 40px;
     }
@@ -194,14 +193,14 @@
         border: 1px solid var(--border-gray);
         padding: 15px;
         border-radius: 4px;
-        overflow-x: auto; /* Scroll horizontal se precisar */
+        overflow-x: auto;
     }
 
     .cert-text {
-        font-family: 'Courier New', Courier, monospace; /* Monospace */
+        font-family: 'Courier New', Courier, monospace;
         font-size: 11px;
         color: var(--text-dark-gray);
-        white-space: pre-wrap; /* Mantém formatação */
+        white-space: pre-wrap;
         word-break: break-all;
         line-height: 1.4;
     }
@@ -241,7 +240,6 @@
         padding-top: 15px;
     }
 
-    /* Ajuste Mobile */
     @media (max-width: 420px) {
         body { background-color: var(--white); }
         .container { box-shadow: none; max-width: 100%; }
@@ -274,7 +272,7 @@
             A carteira de identificação estudantil apresentada foi validada junto à base de dados da UBES. Os dados conferem com a matrícula ativa na instituição de ensino informada.
         </p>
 
-        <!-- DADOS DO ESTUDANTE (DUAS COLUNAS) -->
+        <!-- DADOS DO ESTUDANTE -->
         <div class="data-section">
             
             <!-- Coluna Esquerda: Lista -->
@@ -301,10 +299,10 @@
                 </div>
             </div>
 
-            <!-- Coluna Direita: Foto -->
+            <!-- Coluna Direita: Foto (Enquadrada Automaticamente) -->
             <div class="photo-column">
-                <!-- Foto Placeholder (Use a mesma lógica de hospedagem anterior) -->
-                <img src="assets/FOTO BATATA.png">
+                <!-- CAMINHO DA FOTO CONFIGURADO -->
+                <img src="assets/FOTO BATATA.jpeg" alt="Foto do Estudante" class="student-photo">
             </div>
         </div>
 
@@ -316,15 +314,12 @@
 MIIDazCCAlOgAwIBAgIUH5v9K1v2Q0zX8Y7L4zW5R8P2Q3jMA0GCSqGSIb3DQEBCwUA
 MEUxCzAJBgNVBAYTAlJSMQ8wDQYDVQQIDAZTZWFvIFBhdWxvMQ8wDQYDVQQHDAZT
 ZWFvIFBhdWxvMQ4wDAYDVQQKDAVVQkVTAiGA8yMDI2MDIwNTEyNTQ0N1oYDzIwMjYw
-MzA3MTI1NDQ3WjBFMQswCQYDVQQGEwJCUjEPMA0GA1UECAwGU2VhbyBQYXVsbzEP
-MA0GA1UEBwwGU2VhbyBQYXVsbzEOMAwGA1UECgwFVUJFUzCCASIwDQYJKoZIhvcN
-AQEBBQADggEPADCCAQoCggEBALm9D8X7V1wQ5j9Z2R6L3k8N4vQ2w9M0K1p5Q8R7
-X2vY1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ
-5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7
-p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v
-9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8
-p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1w
-Z5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7p0L2X6v9N1M5K8p0X3V1wZ5N8M4K7
+MzA3MTI1NDQ3WjBFMQswCQYDVQQGEwJCUjEPMA0GA1UECAwGU2VvIFBhdWxvMQ8w
+DQYDVQQHDAZTZWFvIFBhdWxvMQ4wDAYDVQQKDAVVQkVTAiGA8yMDI2MDIwNTEyNTQ0
+N1oYDzIwMjYwMzA3MTI1NDQ3WjBFMQswCQYDVQQGEwJCUjEPMA0GA1UECAwGU2Vv
+IFBhdWxvMQ8wDQYDVQQHDAZTZWFvIFBhdWxvMQ4wDAYDVQQKDAVVQkVTAiGA8yMDI2
+MDIwNTEyNTQ0N1oYDzIwMjYwMzA3MTI1NDQ3WjBFMQswCQYDVQQGEwJCUjEPMA0GA
+1UECAwGU2VvIFBhdWxvMQ8wDQYDVQQHDAZTZWFvIFBhdWxvMQ4wDAYDVQQKDAVVQkVT
 -----END CERTIFICATE-----</div>
             </div>
         </div>
